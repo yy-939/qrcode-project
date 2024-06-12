@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from "react-router-dom"
 import CompanyLogo from '../../Images/CompanyLogo.png';
 
 export const Navbar = () => {
@@ -18,14 +19,10 @@ export const Navbar = () => {
                 <div className='collapse navbar-collapse' id='navbarNavDropdown'>
                     <ul className='navbar-nav'>
                         <li className='nav-item'>
-                            <a className='nav-link' href='#'>
-                                <i className="bi bi-house"></i> Home
-                            </a>
+                            <NavLink className='nav-link' to='/home'> <i className="bi bi-house"></i>Home</NavLink>
                         </li>
                         <li>
-                            <a className='nav-link' href='#'>
-                                <i className="bi bi-wrench"></i> Search Machine Parts
-                            </a>
+                            <NavLink className='nav-link' to='/search'><i className="bi bi-wrench"></i> Search Machine Parts</NavLink>
                         </li>
                     </ul>
                     {/* <ul className='navbar-nav ms-auto'>

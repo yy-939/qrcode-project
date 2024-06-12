@@ -1,3 +1,4 @@
+import React from 'react';
 import PartModel from "../../../Models/PartModel";
 
 export const SearchPart: React.FC<{ part: PartModel }> = (props) => {
