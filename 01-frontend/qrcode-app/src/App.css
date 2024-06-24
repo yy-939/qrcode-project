@@ -18,11 +18,15 @@
 }
 
 .main-color {
-  background-color: #3d3d3d;
+  background-color: #32393d
+}
+
+.highlight-color{
+  background-color: #ee6c4d;
 }
 
 .sub-color {
-  color: #6d6d6d;
+  color: #bdbdbd
 }
 
 /* .col-image-left {

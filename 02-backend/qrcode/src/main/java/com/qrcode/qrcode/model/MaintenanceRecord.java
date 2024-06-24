@@ -18,6 +18,6 @@ public class MaintenanceRecord {
     private Date endDate;
     private String maintenanceContent;
     private boolean result;
-    private Map<String, Integer> replacementParts;
+    private Map<String, Integer> replacementParts; // <sub-part Id, # of replaced sub-parts>
     private String maintenanceEquipmentId;
 }

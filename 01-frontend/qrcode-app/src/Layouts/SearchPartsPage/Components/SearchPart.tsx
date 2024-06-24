@@ -1,9 +1,8 @@
 import React from 'react';
 import PartModel from "../../../Models/PartModel";
+import { Link } from 'react-router-dom';
 
 export const SearchPart: React.FC<{ part: PartModel }> = (props) => {
-    console.log('Image URL:', props.part.img); 
-
     return(
         <div className='card mt-3 shadow p-3 mb-3 bg-body rounded'>
         <div className='row g-0'>
@@ -27,15 +26,18 @@ export const SearchPart: React.FC<{ part: PartModel }> = (props) => {
                     <h4>
                         {props.part.englishName}
                     </h4>
+                    <h4>
+                        Belonging to: {props.part.belongingEquipmentId}
+                    </h4>
                     <p className='card-text'>
                         {props.part.partId}
                     </p>
                 </div>
             </div>
             <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                <a className="btn btn-md main-color text-white" href="#">
+                <Link to={`/detail/${props.part.id}`} className="btn btn-md highlight-color text-white">
                     View Details
-                </a>
+                </Link>
             </div>
         </div>
     </div>

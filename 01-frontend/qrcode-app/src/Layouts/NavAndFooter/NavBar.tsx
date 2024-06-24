@@ -19,9 +19,6 @@ export const Navbar = () => {
                 <div className='collapse navbar-collapse' id='navbarNavDropdown'>
                     <ul className='navbar-nav'>
                         <li className='nav-item'>
-                            <NavLink className='nav-link' to='/home'> <i className="bi bi-house"></i>Home</NavLink>
-                        </li>
-                        <li>
                             <NavLink className='nav-link' to='/search'><i className="bi bi-wrench"></i> Search Machine Parts</NavLink>
                         </li>
                     </ul>

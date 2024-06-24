@@ -1,6 +1,7 @@
 package com.qrcode.qrcode.repository;
 
 import com.qrcode.qrcode.model.MachinePart;
+import com.qrcode.qrcode.model.MaintenanceRecord;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -12,8 +13,13 @@ public interface MachinePartsRepository extends MongoRepository<MachinePart, Str
 
     @Query("{ 'partId': { $regex: ?0, $options: 'i' } }") // ignore cases
     Page<MachinePart> findByPartId(String partId, Pageable pageable);
+
+    @Query("{ 'belongingEquipmentId': { $regex: ?0, $options: 'i' } }")
+    Page<MachinePart> findByBelongingEquipmentIdContaining(String belongingEquipmentId, Pageable pageable);
+
     @Query("{ 'englishName': { $regex: ?0, $options: 'i' } }")
     Page<MachinePart> findByEnglishNameContaining(String englishName, Pageable pageable);
+
     @Query("{ 'chineseName': { $regex: ?0, $options: 'i' } }")
     Page<MachinePart> findByChineseNameContaining(String chineseName, Pageable pageable);
 }

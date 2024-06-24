@@ -11,6 +11,7 @@ public class MachinePart {
     @Id
     private String id; // This will be mapped to MongoDB's _id field
     private String partId; // Custom part ID
+    private String belongingEquipmentId; // For instance, [dryer] includes a [roller]
     private String englishName;
     private String chineseName;
     private String img;

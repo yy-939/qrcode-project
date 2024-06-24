@@ -40,7 +40,7 @@ export const SearchPartsPage = () => {
             const responseJson = await response.json();
 
             const responseData = responseJson._embedded.machineParts;
-
+            console.log(responseData)
             setTotalAmountParts(responseJson.page.totalElements);
             setTotalPages(responseJson.page.totalPages);
 
@@ -51,10 +51,12 @@ export const SearchPartsPage = () => {
                     partId : responseData[key].partId,
                     englishName : responseData[key].englishName,
                     chineseName: responseData[key].chineseName,
+                    belongingEquipmentId: responseData[key].belongingEquipmentId,
                     img : responseData[key].img
                 })
             }
-            setParts(loadedParts );
+            console.log('Loaded Parts:', loadedParts);
+            setParts(loadedParts);
             setIsLoading(false);
         };
         fetchParts().catch((error: any) => {
@@ -97,6 +99,9 @@ export const SearchPartsPage = () => {
                 case 'chineseName':
                     searchPath = `/search/findByChineseNameContaining?chineseName=${search}&page=${currPage - 1}&size=${partsPerPage}`;
                     break;
+                case 'belongingEquipmentId':
+                    searchPath = `/search/findByBelongingEquipmentIdContaining?belongingEquipmentId=${search}&page=${currPage - 1}&size=${partsPerPage}`;
+                    break;
                 default:
                     searchPath = '';
             }
@@ -115,6 +120,15 @@ export const SearchPartsPage = () => {
         <div>
             <div className='container'>
                 <div className='row mt-5'>
+                    <div className='col-4'>
+                        <select className='form-control' value={searchType} 
+                        onChange={(e) => setSearchType(e.target.value)}>
+                            <option value="partId">Search by Part ID</option>
+                            <option value="englishName">Search by English Name</option>
+                            <option value="chineseName">Search by Chinese Name</option>
+                            <option value="belongingEquipmentId">Search by Belonging Device ID</option>
+                        </select>
+                    </div>
                     <div className='col-6'>
                         <div className='d-flex'>
                             <input className='form-control me-2' type='search'
@@ -125,13 +139,6 @@ export const SearchPartsPage = () => {
                                 Search
                             </button>
                         </div>
-                    </div>
-                    <div className='col-4'>
-                        <select className='form-control' value={searchType} onChange={(e) => setSearchType(e.target.value)}>
-                            <option value="partId">Part ID</option>
-                            <option value="englishName">English Name</option>
-                            <option value="chineseName">Chinese Name</option>
-                        </select>
                     </div>
                 </div>
                 {totalAmountParts > 0 ?

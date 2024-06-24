@@ -4,10 +4,10 @@ class RecordModel {
     worker: string;
     startDate: Date;
     endDate: Date;
+    maintenanceEquipmentId: string;
     maintenanceContent: string;
     result: boolean;
     replacementParts?: Record<string, number>;
-    maintenanceEquipmentId: string;
 
     constructor (id: number, time: Date, worker: string, startDate: Date, 
         endDate: Date, maintenanceContent: string, result: boolean, 
